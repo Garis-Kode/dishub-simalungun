@@ -19,29 +19,24 @@
 
 	</head>
 
-	<body id="kt_app_body" data-kt-app-header-fixed-mobile="true" data-kt-app-toolbar-enabled="true" data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true" data-kt-app-sidebar-push-footer="true" class="app-default">
-		<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-			<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-				
-        @include('layouts._partials.topbar')
+	<body id="kt_app_body">
+		<div class="d-flex flex-column flex-root" id="kt_app_root">
+			<div class="d-flex flex-column flex-lg-row flex-column-fluid">
 
-				<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+        @yield('content')
 
-          @include('layouts._partials.sidebar')
-					
-					<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-						<div class="d-flex flex-column flex-column-fluid">
-							<div id="kt_app_content" class="app-content flex-column-fluid">
-								<div id="kt_app_content_container" class="app-container container-fluid">
-
-                  @yield('content')
-
-								</div>
-							</div>
-						</div>
-
-						@include('layouts._partials.footer')
-            
+				<div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url(assets/media/misc/auth-bg.png)">
+					<div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
+						<a href="index.html" class="mb-0 mb-lg-12">
+							<img alt="Logo" src="assets/media/logos/custom-1.png" class="h-60px h-lg-75px" />
+						</a>
+						<img class="d-none d-lg-block mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20" src="assets/media/misc/auth-screens.png" alt="" />
+						<h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">Fast, Efficient and Productive</h1>
+						<div class="d-none d-lg-block text-white fs-base text-center">In this kind of post, 
+						<a href="#" class="opacity-75-hover text-warning fw-bold me-1">the blogger</a>introduces a person they’ve interviewed 
+						<br />and provides some background information about 
+						<a href="#" class="opacity-75-hover text-warning fw-bold me-1">the interviewee</a>and their 
+						<br />work following this is a transcript of the interview.</div>
 					</div>
 				</div>
 			</div>
