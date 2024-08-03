@@ -12,7 +12,7 @@
         </div>
 
         @if (session()->has('success'))
-        <div class="alert alert-dismissible bg-light-success d-flex flex-column flex-sm-row p-5 mb-10">
+        <div class="alert alert-dismissible bg-light-success d-flex flex-column flex-sm-row align-items-center p-5 mb-10">
           <i class="ki-duotone ki-notification-bing fs-2hx text-success me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
           <div class="d-flex flex-column pe-0 pe-sm-10">
               <span>{{ session('success') }}</span>
@@ -22,7 +22,7 @@
           </button>
         </div>
         @elseif (session()->has('warning'))
-        <div class="alert alert-dismissible bg-light-warning d-flex flex-column flex-sm-row p-5 mb-10">
+        <div class="alert alert-dismissible bg-light-warning d-flex flex-column flex-sm-row align-items-center p-5 mb-10">
           <i class="ki-duotone ki-notification-bing fs-2hx text-warning me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
           <div class="d-flex flex-column pe-0 pe-sm-10">
               <span>{{ session('warning') }}</span>
@@ -32,10 +32,10 @@
           </button>
         </div>
         @elseif (session()->has('error'))
-        <div class="alert alert-dismissible bg-light-danger d-flex flex-column flex-sm-row p-5 mb-10">
+        <div class="alert alert-dismissible bg-light-danger d-flex flex-column flex-sm-row align-items-center p-5 mb-10">
           <i class="ki-duotone ki-notification-bing fs-2hx text-danger me-4 mb-5 mb-sm-0"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
           <div class="d-flex flex-column pe-0 pe-sm-10">
-              <span>{{ session('error') }}</span>
+              <span class="fw-semibold">{{ session('error') }}</span>
           </div>
           <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
               <i class="ki-duotone ki-cross fs-1 text-danger"><span class="path1"></span><span class="path2"></span></i>
@@ -61,7 +61,7 @@
         </div>
         <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
           <div></div>
-          <a href="{{ route('forget') }}" class="link-primary">Lupa Password ?</a>
+          <a href="{{ route('forgot') }}" class="link-primary">Lupa Password ?</a>
         </div>
         <div class="d-grid mb-10">
           <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
