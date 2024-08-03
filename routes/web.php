@@ -9,8 +9,10 @@ Route::get('/', function () {
 
 
 Route::prefix('/auth')->middleware(['guest'])->group(function () {
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register', [AuthController::class, 'registerSubmit'])->name('register.submit');
+    Route::get('/register/kecamatan', [AuthController::class, 'registerDistrict'])->name('register.district');
+    Route::post('/register/kecamatan', [AuthController::class, 'registerDistrictSubmit'])->name('register.district.submit');
+    Route::get('/register/kelurahan', [AuthController::class, 'registerVillage'])->name('register.village');
+    Route::post('/register/kelurahan', [AuthController::class, 'registerVillageSubmit'])->name('register.village.submit');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginSubmit'])->name('login.submit');
     Route::get('/forget', [AuthController::class, 'forget'])->name('forget');

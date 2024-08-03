@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->integer('employee_id')->unique()->nullable();
-            $table->bigInteger('district_id')->nullable();
-            $table->bigInteger('village_id')->nullable();
+            $table->bigInteger('district_id')->unsigned()->nullable();
+            $table->bigInteger('village_id')->unsigned()->nullable();
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
@@ -27,14 +27,14 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('district_id')
                 ->references('id')
-                ->on('districts');
-                // ->cascadeOnDelete()
-                // ->cascadeOnUpdate();
+                ->on('districts')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
             $table->foreign('village_id')
                 ->references('id')
-                ->on('villages');
-                // ->cascadeOnDelete()
-                // ->cascadeOnUpdate();
+                ->on('villages')
+                ->onDelete('set null')
+                ->onUpdate('cascade');
             $table->index('username');
             $table->index('email');
             $table->index('password');
