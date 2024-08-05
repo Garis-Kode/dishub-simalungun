@@ -5,8 +5,8 @@
         <i class="ki-outline ki-abstract-14 fs-2"></i>
       </div>
       <a href="index.html">
-        <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px theme-light-show" />
-        <img alt="Logo" src="assets/media/logos/default-small-dark.svg" class="h-30px theme-dark-show" />
+        <img alt="Logo" src="{{ asset('assets/media/logos/dishub.png') }}" class="h-30px theme-light-show" />
+        <img alt="Logo" src="{{ asset('assets/media/logos/dishub.png') }}" class="h-30px theme-dark-show" />
       </a>
     </div>
     <div class="d-flex flex-stack flex-lg-row-fluid" id="kt_app_header_wrapper">
@@ -20,13 +20,15 @@
           <li class="breadcrumb-item">
             <i class="ki-outline ki-right fs-7 text-gray-700 mx-n1"></i>
           </li>
-          <li class="breadcrumb-item text-gray-600 fw-bold lh-1">Account</li>
-          <li class="breadcrumb-item">
-            <i class="ki-outline ki-right fs-7 text-gray-700 mx-n1"></i>
-          </li>
-          <li class="breadcrumb-item text-gray-500">Overview</li>
+          <li class="breadcrumb-item text-gray-600 fw-bold lh-1">{{ $title ?? '-' }}</li>
+          @if ($subTitle)
+            <li class="breadcrumb-item">
+              <i class="ki-outline ki-right fs-7 text-gray-700 mx-n1"></i>
+            </li>
+            <li class="breadcrumb-item text-gray-500">{{ $subTitle }}</li>
+          @endif
         </ul>
-        <h1 class="text-gray-900 fw-bolder m-0">Account</h1>
+        <h1 class="text-gray-900 fw-bolder m-0">{{ $title }}</h1>
       </div>
       <a href="#" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="left-start" data-kt-menu-offset="45px, -40px" class="btn btn-light btn-icon d-flex flex-center h-35px h-lg-40px">
         <span>

@@ -2,11 +2,11 @@
   <div class="app-sidebar-header d-none d-lg-flex px-6 pt-8 pb-4" id="kt_app_sidebar_header">
     <div class="btn btn-outline btn-custom btn-flex w-100">
       <span class="d-flex flex-center flex-shrink-0 w-40px me-3">
-        <img alt="Logo" src="assets/media/logos/default-small.svg" data-kt-element="logo" class="h-30px" />
+        <img alt="Logo" src="{{ asset('assets/media/logos/dishub.png') }}" data-kt-element="logo" class="h-30px" />
       </span>
       <span class="d-flex flex-column align-items-start flex-grow-1">
         <span class="fs-5 fw-bold text-white text-uppercase" data-kt-element="title">Metronic</span>
-        <span class="fs-7 fw-bold text-gray-700 lh-sm" data-kt-element="desc">Workspace</span>
+        <span class="fs-7 fw-bold text-gray-700 lh-sm" data-kt-element="desc">DISHUB Simalungun</span>
       </span>
     </div>
   </div>
@@ -105,8 +105,8 @@
             <span class="menu-title">Monitoring</span>
           </a>
         </div>
-        <div class="menu-item">
-          <a href="apps/projects/activity.html" class="menu-link">
+        <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+          <span class="menu-link">
             <span class="menu-icon">
               <i class="ki-duotone ki-profile-circle fs-2">
                 <span class="path1"></span>
@@ -115,7 +115,26 @@
               </i>
             </span>
             <span class="menu-title">Pengguna</span>
-          </a>
+            <span class="menu-arrow"></span>
+          </span>
+          <div class="menu-sub menu-sub-accordion">
+            <div class="menu-item">
+              <a class="menu-link active" href="index.html">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Pending</span>
+              </a>
+            </div>
+            <div class="menu-item">
+              <a class="menu-link" href="dashboards/ecommerce.html">
+                <span class="menu-bullet">
+                  <span class="bullet bullet-dot"></span>
+                </span>
+                <span class="menu-title">Aktif</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -123,18 +142,18 @@
   <div class="app-sidebar-footer d-flex flex-stack px-11 pb-10" id="kt_app_sidebar_footer">
     <div class="">
       <div class="cursor-pointer symbol symbol-circle symbol-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-overflow="true" data-kt-menu-placement="top-start">
-        <img src="assets/media/avatars/300-2.jpg" alt="image" />
+        <img src="https://ui-avatars.com/api/?bold=true&name={{ Auth::user()->name }}" alt="image" />
       </div>
       <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
         <div class="menu-item px-3">
           <div class="menu-content d-flex align-items-center px-3">
             <div class="symbol symbol-50px me-5">
-              <img alt="Logo" src="assets/media/avatars/300-2.jpg" />
+              <img alt="Logo" src="https://ui-avatars.com/api/?bold=true&name={{ Auth::user()->name }}" />
             </div>
             <div class="d-flex flex-column">
-              <div class="fw-bold d-flex align-items-center fs-5">Alice Page 
-              <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span></div>
-              <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">alice@kt.com</a>
+              <div class="fw-bold d-flex align-items-center fs-5">{{ Auth::user()->name }} 
+              <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->role }}</span></div>
+              <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
             </div>
           </div>
         </div>
@@ -142,13 +161,12 @@
         <div class="menu-item px-5">
           <a href="account/overview.html" class="menu-link px-5">My Profile</a>
         </div>
-        <div class="separator my-2"></div>
         <div class="menu-item px-5">
-          <a href="authentication/layouts/corporate/sign-in.html" class="menu-link px-5">Sign Out</a>
+          <a href="{{ route('logout') }}" class="menu-link px-5">Logout</a>
         </div>
       </div>
     </div>
-    <a href="authentication/layouts/corporate/sign-in.html" class="btn btn-sm btn-outline btn-flex btn-custom px-3">
+    <a href="{{ route('logout') }}" class="btn btn-sm btn-outline btn-flex btn-custom px-3">
     <i class="ki-outline ki-entrance-left fs-2 me-2"></i>Logout</a>
   </div>
 </div>
