@@ -1,9 +1,9 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
-  <div class="d-flex flex-center flex-column flex-lg-row-fluid">
-    <div class="w-lg-500px p-10">
+<div class="d-flex flex-row-fluid w-lg-50 p-10 order-2 order-lg-1">
+  <div class="d-flex flex-center flex-row-fluid">
+    <div class="w-lg-500px w-100 p-10">
       <form class="form w-100" action="{{ route('login') }}" method="POST" id="loginForm">
         @csrf
         <div class="mb-11">
@@ -52,7 +52,7 @@
           @enderror
         </div>
         <div class="fv-row mb-3">
-          <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent"  />
+          <input type="password" placeholder="Password" name="password" autocomplete="off" class="form-control bg-transparent @error('password') is-invalid @enderror" />
           @error('password')
           <div class="text-sm text-danger">
             {{ $message }}

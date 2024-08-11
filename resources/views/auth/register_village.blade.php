@@ -2,7 +2,7 @@
 @section('content')
 <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
   <div class="d-flex flex-center flex-column flex-lg-row-fluid">
-    <div class="w-lg-500px p-10">
+    <div class="w-lg-500px w-100 p-10">
       <form class="form w-100" action="{{ route('register.village') }}" method="POST" id="loginForm">
         @csrf
         <div class="mb-11">
@@ -23,7 +23,7 @@
           @enderror
         </div>
         <div class="fv-row mb-8">
-          <select name="village" id="kelurahan" class="form-control form-select @error('village') is-invalid @enderror" required>
+          <select name="village" id="kelurahan" class="form-control form-select @error('village') is-invalid @enderror">
           </select>
           @error('village')
           <div class="invalid-feedback">
@@ -108,9 +108,11 @@
           if (response.success) {
             var data = response.data;
             var $kelurahan = $('#kelurahan');
+            var oldVillage = "{{ old('village') }}"; // Ambil old value
+
             $kelurahan.empty().append('<option value="">Pilih Kelurahan</option>');
             $.each(data, function(index, item) {
-              $kelurahan.append('<option value="' + item.id + '">' + item.name + '</option>');
+              $kelurahan.append('<option value="' + item.id + '"' + (item.id == oldVillage ? ' selected' : '') + '>' + item.name + '</option>');
             });
             $kelurahan.select2();
           } else {
@@ -122,6 +124,12 @@
         }
       });
     });
+
+    // Trigger change if old value exists
+    var oldDistrict = "{{ old('district') }}";
+    if (oldDistrict) {
+      $('#kecamatan').trigger('change');
+    }
   });
 </script>
 @endsection

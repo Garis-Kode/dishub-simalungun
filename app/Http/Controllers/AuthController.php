@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
+use App\Models\Village;
 use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,7 +82,7 @@ class AuthController extends Controller
         $user->email  = $request->email;
         $user->username  = $request->username;
         $user->password  = Hash::make($request->password);
-        $user->role  = 'admin-kecamatan';
+        $user->role  = 'kecamatan';
         $user->save();
 
         return redirect()->route('login')->with('success', 'Congratulation!!, Your account registered successfully');
@@ -109,14 +110,15 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return redirect()->route('register.village')->withInput()->withErrors($validator);
         }
+        $district =  Village::find($request->village);
         $user = new User();
-        $user->district_id  = $request->district;
+        $user->district_id  = $district->district->id;
         $user->village_id  = $request->village;
         $user->name  = $request->name;
         $user->email  = $request->email;
         $user->username  = $request->username;
         $user->password  = Hash::make($request->password);
-        $user->role  = 'admin-kelurahan';
+        $user->role  = 'kelurahan';
         $user->save();
 
         return redirect()->route('login')->with('success', 'Congratulation!!, Your account registered successfully');

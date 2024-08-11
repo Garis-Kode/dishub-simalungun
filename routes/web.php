@@ -34,5 +34,6 @@ Route::prefix('/profile')->middleware(['auth'])->group(function () {
 Route::prefix('/user')->middleware(['auth'])->group(function () {
     Route::get('/pending', [UserController::class, 'pending'])->name('user.pending');
     Route::get('/pending/data', [UserController::class, 'pendingData'])->name('user.pending.data');
+    Route::get('/pending/{id}/approve', [UserController::class, 'approve'])->name('user.pending.approve');
     Route::post('/active', [UserController::class, 'active'])->name('user.active');
 });
